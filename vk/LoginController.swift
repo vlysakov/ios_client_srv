@@ -1,9 +1,11 @@
 import UIKit
 import WebKit
+import Alamofire
 
 class LoginController: UIViewController, WKNavigationDelegate {
     
     var webView: WKWebView!
+    var afterSignIn: (() -> ())?
     
     override func loadView() {
         super.loadView()
@@ -18,6 +20,7 @@ class LoginController: UIViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         webView.load(loginRequest())
+        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
     }
     
     private func loginRequest() -> URLRequest {
@@ -35,6 +38,14 @@ class LoginController: UIViewController, WKNavigationDelegate {
         return URLRequest(url: urlComponents.url!)
     }
     
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "estimatedProgress" {
+            if webView.estimatedProgress == 1.0 {
+                afterSignIn?()
+            }
+        }
+    }
+    
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
         guard let url = navigationResponse.response.url, url.path == "/blank.html", let fragment = url.fragment  else {
             decisionHandler(.allow)
@@ -50,10 +61,13 @@ class LoginController: UIViewController, WKNavigationDelegate {
                 dict[key] = value
                 return dict
         }
+        
         Session.instance.accessToken = params["access_token"]
         Session.instance.expiresIn = params["expires_in"]
         Session.instance.userId = params["user_id"]
+//        afterSignIn?()
         decisionHandler(.cancel)
+//        Session.instance.getFriends()
     }
 
 

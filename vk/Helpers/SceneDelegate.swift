@@ -11,6 +11,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var loginVC: LoginController?
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -19,9 +20,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let wnd = UIWindow(windowScene: windowScene)
-        wnd.rootViewController = LoginController()
+        loginVC = LoginController()
+        loginVC?.afterSignIn = authSignIn
+        wnd.rootViewController = loginVC
         wnd.makeKeyAndVisible()
         self.window = wnd
+        self.window?.makeKeyAndVisible()
+    }
+    
+    func authSignIn() {
+        self.window?.rootViewController = MainController()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

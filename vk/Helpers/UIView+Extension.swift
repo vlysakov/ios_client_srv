@@ -2,6 +2,7 @@ import UIKit
 
 extension UIView {
     
+    //MARK: AutoLayout methods
     func fillSuperview(padding: UIEdgeInsets) {
         translatesAutoresizingMaskIntoConstraints = false
         anchor(top: superview?.topAnchor,
@@ -40,6 +41,33 @@ extension UIView {
         }
         if size.height != 0 {
             heightAnchor.constraint(equalToConstant: size.height).isActive = true
+        }
+    }
+    
+    //MARK: Design methods and properties
+    public var borderColor:UIColor? {
+        get {
+            if let color = self.layer.borderColor {
+                return  UIColor(cgColor: color)
+            }
+            return .black
+        }
+        set {
+            self.layer.borderColor = newValue?.cgColor
+        }
+    }
+    
+    public var borderWidth:CGFloat {
+        get { self.layer.borderWidth }
+        set {
+            self.layer.borderWidth = newValue
+        }
+    }
+    
+    @objc public var cornerRadius:CGFloat {
+        get { layer.cornerRadius }
+        set {
+            layer.cornerRadius = newValue
         }
     }
     

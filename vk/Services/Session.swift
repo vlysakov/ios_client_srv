@@ -9,4 +9,5 @@ class Session {
     var userId: String?
     
     private init() {}
+   
 }
