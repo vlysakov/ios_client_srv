@@ -32,7 +32,7 @@ class MainController: UITabBarController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         var f = tabBar.frame
-        f.size.height = f.size.height - 10
+        f.size.height = f.size.height - 11
         f.origin.y = view.frame.size.height - f.size.height
         tabBar.frame = f
         
