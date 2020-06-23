@@ -16,6 +16,17 @@
 		F9447BA9249E052100C80DF9 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9447BA8249E052100C80DF9 /* NetworkService.swift */; };
 		F94BC017249F76FE002ACA08 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BC016249F76FE002ACA08 /* MainController.swift */; };
 		F94BC01B24A0977F002ACA08 /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BC01A24A0977F002ACA08 /* AvatarImageView.swift */; };
+		F94BC02324A0BCF1002ACA08 /* FriendsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BC01D24A0BCF1002ACA08 /* FriendsPresenter.swift */; };
+		F94BC02424A0BCF1002ACA08 /* FriendsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BC01E24A0BCF1002ACA08 /* FriendsWorker.swift */; };
+		F94BC02524A0BCF1002ACA08 /* FriendsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BC01F24A0BCF1002ACA08 /* FriendsRouter.swift */; };
+		F94BC02624A0BCF1002ACA08 /* FriendsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BC02024A0BCF1002ACA08 /* FriendsModels.swift */; };
+		F94BC02724A0BCF1002ACA08 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BC02124A0BCF1002ACA08 /* FriendsViewController.swift */; };
+		F94BC02824A0BCF1002ACA08 /* FriendsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BC02224A0BCF1002ACA08 /* FriendsInteractor.swift */; };
+		F94BC02D24A0CF43002ACA08 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BC02C24A0CF43002ACA08 /* UserResponse.swift */; };
+		F94BC02F24A0F034002ACA08 /* PhotoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BC02E24A0F034002ACA08 /* PhotoResponse.swift */; };
+		F94BC03124A1DD8F002ACA08 /* CountableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BC03024A1DD8F002ACA08 /* CountableItem.swift */; };
+		F94BC03324A1F186002ACA08 /* GroupResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BC03224A1F186002ACA08 /* GroupResponse.swift */; };
+		F94BC03724A1F79F002ACA08 /* ResponseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BC03624A1F79F002ACA08 /* ResponseWrapper.swift */; };
 		F9FCE21A2491060900993EC4 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FCE2192491060900993EC4 /* UIView+Extension.swift */; };
 		F9FCE21E24911A2700993EC4 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FCE21D24911A2700993EC4 /* Session.swift */; };
 /* End PBXBuildFile section */
@@ -31,6 +42,17 @@
 		F9447BA8249E052100C80DF9 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		F94BC016249F76FE002ACA08 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		F94BC01A24A0977F002ACA08 /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
+		F94BC01D24A0BCF1002ACA08 /* FriendsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsPresenter.swift; sourceTree = "<group>"; };
+		F94BC01E24A0BCF1002ACA08 /* FriendsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsWorker.swift; sourceTree = "<group>"; };
+		F94BC01F24A0BCF1002ACA08 /* FriendsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsRouter.swift; sourceTree = "<group>"; };
+		F94BC02024A0BCF1002ACA08 /* FriendsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsModels.swift; sourceTree = "<group>"; };
+		F94BC02124A0BCF1002ACA08 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
+		F94BC02224A0BCF1002ACA08 /* FriendsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsInteractor.swift; sourceTree = "<group>"; };
+		F94BC02C24A0CF43002ACA08 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
+		F94BC02E24A0F034002ACA08 /* PhotoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoResponse.swift; sourceTree = "<group>"; };
+		F94BC03024A1DD8F002ACA08 /* CountableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountableItem.swift; sourceTree = "<group>"; };
+		F94BC03224A1F186002ACA08 /* GroupResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupResponse.swift; sourceTree = "<group>"; };
+		F94BC03624A1F79F002ACA08 /* ResponseWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseWrapper.swift; sourceTree = "<group>"; };
 		F9FCE2192491060900993EC4 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		F9FCE21D24911A2700993EC4 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,9 +98,10 @@
 		F9361FB32490F8D700ADE1D8 /* vk */ = {
 			isa = PBXGroup;
 			children = (
+				F94BC01C24A0BC7F002ACA08 /* Controllers */,
 				F9361FC22490F8D900ADE1D8 /* Info.plist */,
 				22909D16249FAA3500CA8792 /* Resources */,
-				F94BC018249F8ABA002ACA08 /* Data */,
+				F94BC018249F8ABA002ACA08 /* Model */,
 				F9447BA7249E050300C80DF9 /* Services */,
 				F9FCE218249105DC00993EC4 /* Helpers */,
 				F9361FB82490F8D700ADE1D8 /* LoginController.swift */,
@@ -96,11 +119,16 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		F94BC018249F8ABA002ACA08 /* Data */ = {
+		F94BC018249F8ABA002ACA08 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F94BC02C24A0CF43002ACA08 /* UserResponse.swift */,
+				F94BC02E24A0F034002ACA08 /* PhotoResponse.swift */,
+				F94BC03024A1DD8F002ACA08 /* CountableItem.swift */,
+				F94BC03224A1F186002ACA08 /* GroupResponse.swift */,
+				F94BC03624A1F79F002ACA08 /* ResponseWrapper.swift */,
 			);
-			path = Data;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		F94BC01924A096F8002ACA08 /* Controls */ = {
@@ -109,6 +137,27 @@
 				F94BC01A24A0977F002ACA08 /* AvatarImageView.swift */,
 			);
 			path = Controls;
+			sourceTree = "<group>";
+		};
+		F94BC01C24A0BC7F002ACA08 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F94BC02924A0BCF7002ACA08 /* Friends */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F94BC02924A0BCF7002ACA08 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				F94BC01D24A0BCF1002ACA08 /* FriendsPresenter.swift */,
+				F94BC01E24A0BCF1002ACA08 /* FriendsWorker.swift */,
+				F94BC01F24A0BCF1002ACA08 /* FriendsRouter.swift */,
+				F94BC02024A0BCF1002ACA08 /* FriendsModels.swift */,
+				F94BC02124A0BCF1002ACA08 /* FriendsViewController.swift */,
+				F94BC02224A0BCF1002ACA08 /* FriendsInteractor.swift */,
+			);
+			path = Friends;
 			sourceTree = "<group>";
 		};
 		F9FCE218249105DC00993EC4 /* Helpers */ = {
@@ -197,14 +246,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F94BC03724A1F79F002ACA08 /* ResponseWrapper.swift in Sources */,
 				F9FCE21E24911A2700993EC4 /* Session.swift in Sources */,
+				F94BC02624A0BCF1002ACA08 /* FriendsModels.swift in Sources */,
+				F94BC02724A0BCF1002ACA08 /* FriendsViewController.swift in Sources */,
 				F94BC017249F76FE002ACA08 /* MainController.swift in Sources */,
+				F94BC02824A0BCF1002ACA08 /* FriendsInteractor.swift in Sources */,
+				F94BC02D24A0CF43002ACA08 /* UserResponse.swift in Sources */,
 				F9361FB92490F8D700ADE1D8 /* LoginController.swift in Sources */,
+				F94BC02F24A0F034002ACA08 /* PhotoResponse.swift in Sources */,
 				F9361FB52490F8D700ADE1D8 /* AppDelegate.swift in Sources */,
+				F94BC03124A1DD8F002ACA08 /* CountableItem.swift in Sources */,
 				F9FCE21A2491060900993EC4 /* UIView+Extension.swift in Sources */,
 				F94BC01B24A0977F002ACA08 /* AvatarImageView.swift in Sources */,
+				F94BC03324A1F186002ACA08 /* GroupResponse.swift in Sources */,
+				F94BC02524A0BCF1002ACA08 /* FriendsRouter.swift in Sources */,
 				F9447BA9249E052100C80DF9 /* NetworkService.swift in Sources */,
 				F9361FB72490F8D700ADE1D8 /* SceneDelegate.swift in Sources */,
+				F94BC02324A0BCF1002ACA08 /* FriendsPresenter.swift in Sources */,
+				F94BC02424A0BCF1002ACA08 /* FriendsWorker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

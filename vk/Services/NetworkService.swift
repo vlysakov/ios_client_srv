@@ -7,6 +7,7 @@ enum VkApiMethod: String {
     case getPhotosAlbums    = "photos.getAlbums"
     case getGroups          = "groups.get"
     case searchGroups       = "groups.search"
+    case getUsers           = "users.get"
 }
 
 class NetworkService {
@@ -21,40 +22,77 @@ class NetworkService {
         return NetworkService.host + method.rawValue
     }
     
-    func request(method: VkApiMethod, params: [String : String], completion: @escaping (AFDataResponse<Data?>) -> Void) {
+    func request(method: VkApiMethod, params: [String : String], completion: @escaping (Data?, AFError?) -> Void) {
         guard let token = Session.instance.accessToken else { return }
         var p = params
         p["access_token"] = token
         p["v"] = NetworkService.vkVersion
-        AF.request(getMethodUrl(method), method: .post, parameters: p).response { response in completion(response) }
+        AF.request(getMethodUrl(method), method: .post, parameters: p).responseJSON { response in
+            switch response.result {
+            case .success:
+                if let json = response.data {
+                    completion(json, nil)
+                }
+            case .failure(let err):
+                completion(nil, err)
+                print(err)
+            }
+        }
+    }
+    
+    private func decodeJSON<T: Decodable>(type: T.Type, from: Data?) -> T? {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        guard let data = from, let response = try? decoder.decode(type.self, from: data) else { return nil }
+        return response
     }
     
     func printFriends() {
-        request(method: .getFriends, params: ["name_case": "nom", "fields": "photo_100"], completion: {r in
-            print("printFriends **********************************************************************")
-            debugPrint(r)})
+        request(method: .getFriends, params: ["name_case": "nom", "fields": "photo_100"], completion: {r, _ in
+            let decoded = self.decodeJSON(type: ItemsResponseWrapper<UserItem>.self, from: r)
+            if let d = decoded {
+                d.response.items.forEach{ print ("\($0.id) \($0.firstName) \($0.lastName)") }
+            }
+        })
     }
     
     func printPhotos() {
         let p = ["owner_id": Session.instance.userId ?? "",
                  "album_id": "wall",
                  "count": "2"]
-        NetworkService.instance.request(method: .getPhotos, params: p, completion: {r in
-            print("printPhotos **********************************************************************")
-            debugPrint(r)})
-
+        NetworkService.instance.request(method: .getPhotos, params: p, completion: {r, _ in
+            let decoded = self.decodeJSON(type: ItemsResponseWrapper<PhotoItem>.self, from: r)
+            if let d = decoded {
+                d.response.items.forEach{ print ("Photo = \($0.id)") }
+            }
+        })
     }
     
     func printGroups() {
-        request(method: .getGroups, params: ["owner_id": Session.instance.userId ?? "", "extended": "1"], completion: {r in
-            print("printGroups **********************************************************************")
-            debugPrint(r)})
+        request(method: .getGroups, params: ["owner_id": Session.instance.userId ?? "", "extended": "1"], completion: {r, _ in
+            let decoded = self.decodeJSON(type: ItemsResponseWrapper<GroupItem>.self, from: r)
+            if let d = decoded {
+                d.response.items.forEach{ print ("Group = \($0.name)") }
+            }
+        })
     }
     
     func printSearchGroups(_ str: String) {
-        request(method: .searchGroups, params: ["q": str, "count": "3"], completion: {r in
-            print("printSearchGroups **********************************************************************")
-            debugPrint(r)})
+        request(method: .searchGroups, params: ["q": str, "count": "5"], completion: {r, _ in
+            let decoded = self.decodeJSON(type: ItemsResponseWrapper<GroupItem>.self, from: r)
+            if let d = decoded {
+                d.response.items.forEach{ print ("Find Group (search string = \(str)) = \($0.name)") }
+            }
+        })
+    }
+    
+    func printUserInfo() {
+        request(method: .getUsers, params: ["fields": "photo_100"], completion: {r, _ in
+            let decoded = self.decodeJSON(type: BaseResponseWrapper<[UserItem]>.self, from: r)
+            if let d = decoded {
+                d.response.forEach{ print ("\($0.id) \($0.firstName) \($0.lastName)") }
+            }
+        })
     }
     
 }

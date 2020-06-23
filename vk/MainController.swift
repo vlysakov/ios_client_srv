@@ -10,9 +10,8 @@ class MainController: UITabBarController {
         newsVC.view.backgroundColor = bColor
         newsVC.title = "News"
         newsVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "newsfeed_28"), selectedImage: UIImage(named: "newsfeed_28"))
-        let friendsVC = UIViewController()
-        friendsVC.view.backgroundColor = bColor
-        friendsVC.title = "Firends"
+        let friendsVC = FriendsViewController()
+        friendsVC.title = "Friends"
         friendsVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "users_28"), selectedImage: UIImage(named: "users_28"))
         let profileVC = UIViewController()
         profileVC.view.backgroundColor = bColor
@@ -26,13 +25,14 @@ class MainController: UITabBarController {
         NetworkService.instance.printPhotos()
         NetworkService.instance.printGroups()
         NetworkService.instance.printSearchGroups("nikon")
+        NetworkService.instance.printUserInfo()
 
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         var f = tabBar.frame
-        f.size.height = f.size.height - 11
+        f.size.height = f.size.height - 10
         f.origin.y = view.frame.size.height - f.size.height
         tabBar.frame = f
         
