@@ -1,22 +1,39 @@
 import UIKit
+import Kingfisher
 
 class AvatarImageView: UIView {
-
-    override var cornerRadius: CGFloat {
-        didSet {
-            layoutImage()
-        }
-    }
     
     // ImageView Attributes
     fileprivate var imageView = UIImageView()
-    var image: UIImage? { didSet {  layoutImage() } }
-    var imageContentMode: UIView.ContentMode = .scaleAspectFit { didSet { layoutImage() } }
+    var image: UIImage? {
+        get { imageView.image }
+        set { imageView.image = newValue }
+    }
+    
+    var url: String? {
+        didSet {
+            if let urlStr = url {
+                imageView.kf.setImage(with: URL(string: urlStr ))
+            }
+        }
+    }
+    
+    var height: CGFloat = 0 {
+        didSet {
+            guard height > 0 else { return }
+            NSLayoutConstraint .activate([
+                widthAnchor.constraint(equalToConstant: height),
+                heightAnchor.constraint(equalToConstant: height)
+            ])
+            cornerRadius = height / 2
+        }
+    }
+    
     // Shadow Attributes
-    var shadowColor: UIColor = .black { didSet { dropShadow() } }
-    var shadowOpacity: Float = 0.0 { didSet { dropShadow() } }
-    var shadowRadius: CGFloat = 0.0 { didSet { dropShadow() } }
-    var shadowOffset: CGSize = .zero { didSet { dropShadow() } }
+    var shadowColor: UIColor = .black
+    var shadowOpacity: Float = 0.0
+    var shadowRadius: CGFloat = 0.0
+    var shadowOffset: CGSize = .zero
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,14 +54,14 @@ class AvatarImageView: UIView {
         self.layer.cornerRadius = cornerRadius
         self.layer.borderWidth = borderWidth
         self.layer.borderColor = borderColor?.cgColor
+        self.backgroundColor = .systemBackground
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapAction))
         addGestureRecognizer(tap)
     }
     
     fileprivate func layoutImage() {
-        imageView.frame = CGRect(x: 0.0, y: 0.0, width: self.bounds.width, height: self.bounds.height)
         self.addSubview(imageView)
-        imageView.image = self.image
+        imageView.fillSuperview()
         imageView.contentMode = self.contentMode
         imageView.layer.cornerRadius = self.layer.cornerRadius
         imageView.layer.masksToBounds = true
@@ -65,15 +82,16 @@ class AvatarImageView: UIView {
     @objc func tapAction() {
         let coeff = 0.75
         UIView .animate(withDuration: coeff,
-                        animations: {
-                            self.transform = CGAffineTransform.identity.scaledBy(x: CGFloat(coeff), y: CGFloat(coeff))
-                        },
-                        completion: { (finish) in
-                                    UIView .animate(withDuration: coeff, animations: {
-                                    self.transform = CGAffineTransform.identity
-                                })
-                        })
-
+                        animations: { [weak self] in
+                            self?.transform = CGAffineTransform.identity.scaledBy(x: CGFloat(coeff), y: CGFloat(coeff))
+                            
+            },
+                        completion: { [weak self] (finish) in
+                            UIView .animate(withDuration: coeff, animations: {
+                                self?.transform = CGAffineTransform.identity
+                            })
+        })
+        
     }
     
 }

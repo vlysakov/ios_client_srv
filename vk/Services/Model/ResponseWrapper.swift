@@ -10,3 +10,4 @@ struct ItemsResponseWrapper<T: Decodable>: Decodable {
 struct BaseResponseWrapper<T: Decodable>: Decodable {
     var response: T
 }
+

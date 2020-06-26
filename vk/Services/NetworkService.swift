@@ -47,15 +47,6 @@ class NetworkService {
         return response
     }
     
-    func printFriends() {
-        request(method: .getFriends, params: ["name_case": "nom", "fields": "photo_100"], completion: {r, _ in
-            let decoded = self.decodeJSON(type: ItemsResponseWrapper<UserItem>.self, from: r)
-            if let d = decoded {
-                d.response.items.forEach{ print ("\($0.id) \($0.firstName) \($0.lastName)") }
-            }
-        })
-    }
-    
     func printPhotos() {
         let p = ["owner_id": Session.instance.userId ?? "",
                  "album_id": "wall",
@@ -82,15 +73,6 @@ class NetworkService {
             let decoded = self.decodeJSON(type: ItemsResponseWrapper<GroupItem>.self, from: r)
             if let d = decoded {
                 d.response.items.forEach{ print ("Find Group (search string = \(str)) = \($0.name)") }
-            }
-        })
-    }
-    
-    func printUserInfo() {
-        request(method: .getUsers, params: ["fields": "photo_100"], completion: {r, _ in
-            let decoded = self.decodeJSON(type: BaseResponseWrapper<[UserItem]>.self, from: r)
-            if let d = decoded {
-                d.response.forEach{ print ("\($0.id) \($0.firstName) \($0.lastName)") }
             }
         })
     }
