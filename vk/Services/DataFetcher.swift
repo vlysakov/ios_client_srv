@@ -2,6 +2,7 @@ import Foundation
 
 protocol DataFetcher {
     func getFriends(userId: String?, response: @escaping (ItemsResponseWrapper<UserItem>?) -> Void)
+    func getPhotos(userId: String?, response: @escaping (ItemsResponseWrapper<PhotoItem>?) -> Void)
     func getOwnerInfo (response: @escaping (UserItem?) -> Void)
 }
 

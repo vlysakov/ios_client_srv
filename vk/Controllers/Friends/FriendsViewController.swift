@@ -1,5 +1,4 @@
 import UIKit
-import Kingfisher
 
 protocol FriendsDisplayLogic: class
 {

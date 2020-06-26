@@ -17,7 +17,7 @@ class MainController: UITabBarController {
         profileVC.title = "Profile"
         profileVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "user_circle_28"), selectedImage: UIImage(named: "user_circle_28"))
         
-        self.viewControllers = [UINavigationController(rootViewController: friendsVC), newsVC, UINavigationController(rootViewController: profileVC)]
+        self.viewControllers = [UINavigationController(rootViewController: friendsVC), UINavigationController(rootViewController: profileVC)]
         
         print("UserId = \(Session.instance.userId ?? "nil")")
 

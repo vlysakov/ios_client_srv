@@ -22,6 +22,10 @@ class UserProfileInteractor: UserProfileBusinessLogic, UserProfileDataStore {
             worker.getOwnerInfo(completion: { [weak self] (owner) in
                 self?.presenter?.presentData(response: UserProfile.Model.Response.presentOwner(owner: owner))
             })
+        case .getImages:
+            worker.getImages(completion: { [weak self] (images) in
+                self?.presenter?.presentData(response: UserProfile.Model.Response.presentImages(images: images))
+            })
         }
         
     }

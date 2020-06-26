@@ -47,18 +47,6 @@ class NetworkService {
         return response
     }
     
-    func printPhotos() {
-        let p = ["owner_id": Session.instance.userId ?? "",
-                 "album_id": "wall",
-                 "count": "2"]
-        NetworkService.instance.request(method: .getPhotos, params: p, completion: {r, _ in
-            let decoded = self.decodeJSON(type: ItemsResponseWrapper<PhotoItem>.self, from: r)
-            if let d = decoded {
-                d.response.items.forEach{ print ("Photo = \($0.id)") }
-            }
-        })
-    }
-    
     func printGroups() {
         request(method: .getGroups, params: ["owner_id": Session.instance.userId ?? "", "extended": "1"], completion: {r, _ in
             let decoded = self.decodeJSON(type: ItemsResponseWrapper<GroupItem>.self, from: r)

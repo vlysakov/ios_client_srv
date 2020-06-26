@@ -39,7 +39,7 @@
 		F94BC07724A37AB1002ACA08 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BC07124A37AB1002ACA08 /* UserProfileViewController.swift */; };
 		F94BC07824A37AB1002ACA08 /* UserProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BC07224A37AB1002ACA08 /* UserProfileInteractor.swift */; };
 		F94BC09A24A39C2D002ACA08 /* UserViewControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BC09924A39C2D002ACA08 /* UserViewControl.swift */; };
-		F94BC09C24A5EB7A002ACA08 /* ButtonsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BC09B24A5EB7A002ACA08 /* ButtonsPanel.swift */; };
+		F94BC0A024A62E12002ACA08 /* ThumbCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BC09F24A62E12002ACA08 /* ThumbCell.swift */; };
 		F9FCE21A2491060900993EC4 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FCE2192491060900993EC4 /* UIView+Extension.swift */; };
 		F9FCE21E24911A2700993EC4 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FCE21D24911A2700993EC4 /* Session.swift */; };
 /* End PBXBuildFile section */
@@ -77,7 +77,7 @@
 		F94BC07124A37AB1002ACA08 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		F94BC07224A37AB1002ACA08 /* UserProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileInteractor.swift; sourceTree = "<group>"; };
 		F94BC09924A39C2D002ACA08 /* UserViewControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewControl.swift; sourceTree = "<group>"; };
-		F94BC09B24A5EB7A002ACA08 /* ButtonsPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsPanel.swift; sourceTree = "<group>"; };
+		F94BC09F24A62E12002ACA08 /* ThumbCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbCell.swift; sourceTree = "<group>"; };
 		F9FCE2192491060900993EC4 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		F9FCE21D24911A2700993EC4 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -165,7 +165,7 @@
 				F94BC03824A20DED002ACA08 /* UserTableViewCell.swift */,
 				F94BC06A24A37A11002ACA08 /* GalleryFlowLayout.swift */,
 				F94BC09924A39C2D002ACA08 /* UserViewControl.swift */,
-				F94BC09B24A5EB7A002ACA08 /* ButtonsPanel.swift */,
+				F94BC09F24A62E12002ACA08 /* ThumbCell.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -303,6 +303,7 @@
 				F94BC02824A0BCF1002ACA08 /* FriendsInteractor.swift in Sources */,
 				F94BC02D24A0CF43002ACA08 /* UserResponse.swift in Sources */,
 				F9361FB92490F8D700ADE1D8 /* LoginController.swift in Sources */,
+				F94BC0A024A62E12002ACA08 /* ThumbCell.swift in Sources */,
 				F94BC07724A37AB1002ACA08 /* UserProfileViewController.swift in Sources */,
 				F94BC02F24A0F034002ACA08 /* PhotoResponse.swift in Sources */,
 				F94BC07624A37AB1002ACA08 /* UserProfileModels.swift in Sources */,
@@ -322,7 +323,6 @@
 				F9361FB72490F8D700ADE1D8 /* SceneDelegate.swift in Sources */,
 				F94BC02324A0BCF1002ACA08 /* FriendsPresenter.swift in Sources */,
 				F94BC09A24A39C2D002ACA08 /* UserViewControl.swift in Sources */,
-				F94BC09C24A5EB7A002ACA08 /* ButtonsPanel.swift in Sources */,
 				F94BC07424A37AB1002ACA08 /* UserProfileWorker.swift in Sources */,
 				F94BC02424A0BCF1002ACA08 /* FriendsWorker.swift in Sources */,
 			);

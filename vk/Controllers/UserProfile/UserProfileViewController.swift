@@ -8,6 +8,18 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
     var interactor: UserProfileBusinessLogic?
     var router: (NSObjectProtocol & UserProfileRoutingLogic & UserProfileDataPassing)?
     
+    private var imageModel = UserProfile.ImageViewModel.init(imageUrls: [])
+    
+    lazy var layout = GalleryFlowLayout()
+    lazy var collectionView: UICollectionView = {
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.register(ThumbCell.self, forCellWithReuseIdentifier: ThumbCell.reuseIdentifier)
+        cv.translatesAutoresizingMaskIntoConstraints = false
+        cv.dataSource = self
+        cv.backgroundColor = traitCollection.userInterfaceStyle == .dark ? .black : .white
+        return cv
+    }()
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
@@ -30,9 +42,7 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
         router.viewController = viewController
         router.dataStore = interactor
     }
-    
-    // MARK: Routing
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let scene = segue.identifier {
             let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
@@ -46,6 +56,7 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
         super.viewDidLoad()
         configureUI()
         interactor?.makeRequest(request: UserProfile.Model.Request.getOwner)
+        interactor?.makeRequest(request: UserProfile.Model.Request.getImages)
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -66,7 +77,7 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
         stv1.alignment = .fill
         stv1.addArrangedSubview(userView)
         stv1.addArrangedSubview(getButtonsPanel())
-        stv1.addArrangedSubview(UIView())
+        stv1.addArrangedSubview(collectionView)
         sv.addSubview(stv1)
         stv1.fillSuperview(padding: UIEdgeInsets(top: 4, left: .zero, bottom: .zero, right: .zero))
         NSLayoutConstraint .activate([
@@ -75,27 +86,69 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
         ])
     }
     
-    private func getButtonsPanel() -> ButtonsPanel {
-        let bp = ButtonsPanel(count: 2)
-        bp.buttons[0].setImage(UIImage(named: "newsfeed_28"), for: .normal)
-        bp.buttons[0].setTitle("Друзья", for: .normal)
-//        bp.buttons[0].titleLabel?.text = "12345"
-        bp.buttons[1].setImage(UIImage(named: "users3_28"), for: .normal)
-        bp.buttons[1].setTitle("Сообщества", for: .normal)
-        
-        return bp
+    private func getButtonsPanel() -> UIStackView {
+        let sv = UIStackView()
+        sv.axis = .horizontal
+        sv.distribution = .fillEqually
+        sv.alignment = .center
+        let b1 = UIButton()
+        b1.setImage(UIImage(named: "users_28"), for: .normal)
+        b1.setTitle(" Друзья", for: .normal)
+        b1.setTitleColor(.systemBlue, for: .normal)
+        b1.titleLabel?.font = .systemFont(ofSize: 14)
+        sv.addArrangedSubview(b1)
+        let b2 = UIButton()
+        b2.setImage(UIImage(named: "users3_28"), for: .normal)
+        b2.setTitle(" Сообщества", for: .normal)
+        b2.setTitleColor(.systemBlue, for: .normal)
+        b2.titleLabel?.font = .systemFont(ofSize: 14)
+        sv.addArrangedSubview(b2)
+        b1.widthAnchor.constraint(equalToConstant: view.frame.width / 2).isActive = true
+        b1.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        b2.widthAnchor.constraint(equalToConstant: view.frame.width / 2).isActive = true
+        b2.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        return sv
     }
-    
-    // MARK: Do something
-    
-    //@IBOutlet weak var nameTextField: UITextField!
-    
     
     func displayData(viewModel: UserProfile.Model.ViewModel) {
         switch viewModel {
         case .displayOwner(let owner):
             userView.name = owner.fullName
             userView.url = owner.photoUrlString
+        case .displayImages(let images):
+            imageModel = images
         }
     }
+}
+
+extension UserProfileViewController: UICollectionViewDataSource {
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        updateLayout(view.frame.size)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        updateLayout(size)
+    }
+    
+    private func updateLayout(_ size:CGSize) {
+        if size.width > size.height {
+            layout.columns = 4
+        } else {
+            layout.columns = 3
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return imageModel.imageUrls.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell:ThumbCell = collectionView.dequeueReusableCell(withReuseIdentifier: ThumbCell.reuseIdentifier, for: indexPath) as! ThumbCell
+        cell.urlString = imageModel.imageUrls[indexPath.item]
+        return cell
+    }
+    
+    
 }

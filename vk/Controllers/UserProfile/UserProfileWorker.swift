@@ -14,4 +14,13 @@ class UserProfileWorker {
             }
         })
     }
+    
+    func getImages(completion: @escaping (ItemsResponseWrapper<PhotoItem>.BaseResponse) -> Void) {
+        fetcher.getPhotos(userId: nil, response: { rsp in
+            if let respose = rsp?.response {
+                completion(respose)
+            }
+        })
+    }
+    
 }

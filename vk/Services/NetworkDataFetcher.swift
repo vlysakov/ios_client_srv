@@ -24,4 +24,13 @@ class NetworkDataFetcher: DataFetcher {
         })
     }
     
+    func getPhotos(userId: String?, response: @escaping (ItemsResponseWrapper<PhotoItem>?) -> Void) {
+        let params = ["owner_id": userId ?? (Session.instance.userId ?? ""),
+                 "album_id": "wall"]
+        service.request(method: .getPhotos, params: params, completion: {r, _ in
+            let decoded = self.decodeJSON(type: ItemsResponseWrapper<PhotoItem>.self, from: r)
+            response(decoded)
+        })
+    }
+    
 }

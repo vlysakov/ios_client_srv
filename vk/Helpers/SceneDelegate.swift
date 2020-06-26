@@ -1,11 +1,3 @@
-//
-//  SceneDelegate.swift
-//  vk
-//
-//  Created by Slava V. Lysakov on 10.06.2020.
-//  Copyright © 2020 Slava V. Lysakov. All rights reserved.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -21,8 +13,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let wnd = UIWindow(windowScene: windowScene)
         if Session.instance.isAuth {
+            print("logged")
             wnd.rootViewController = MainController()
         } else {
+            print("loggin...")
             loginVC = LoginController()
             loginVC?.afterSignIn = authSignIn
             wnd.rootViewController = loginVC
