@@ -29,7 +29,7 @@ class LoginController: UIViewController, WKNavigationDelegate {
         urlComponents.host = "oauth.vk.com"
         urlComponents.path = "/authorize"
         urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: "7506747"),
+            URLQueryItem(name: "client_id", value: "7522714"),
             URLQueryItem(name: "display", value: "mobile"),
             URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
             URLQueryItem(name: "scope", value: "262150"),
@@ -65,9 +65,13 @@ class LoginController: UIViewController, WKNavigationDelegate {
         Session.instance.accessToken = params["access_token"]
         Session.instance.expiresIn = params["expires_in"]
         Session.instance.userId = params["user_id"]
-//        afterSignIn?()
+        guard let userId = params["user_id"], let accessToken = params["access_token"], let expiresIn = params["expires_in"] else {
+            decisionHandler(.cancel)
+            return
+        }
+        Session.instance.set(userId: userId, accessToken: accessToken, expiresIn: expiresIn)
         decisionHandler(.cancel)
-//        Session.instance.getFriends()
+        afterSignIn?()
     }
 
 

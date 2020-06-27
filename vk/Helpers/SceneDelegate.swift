@@ -20,8 +20,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let wnd = UIWindow(windowScene: windowScene)
-        loginVC = LoginController()
-        loginVC?.afterSignIn = authSignIn
+        if Session.instance.isAuth {
+            print("logged")
+            wnd.rootViewController = MainController()
+        } else {
+            print("loggin...")
+            loginVC = LoginController()
+            loginVC?.afterSignIn = authSignIn
+            wnd.rootViewController = loginVC
+        }
         wnd.rootViewController = loginVC
         wnd.makeKeyAndVisible()
         self.window = wnd

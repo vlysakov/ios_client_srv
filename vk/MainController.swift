@@ -6,7 +6,7 @@ class MainController: UITabBarController {
         super.viewDidLoad()
         print(tabBar.frame.height)
         let newsVC = UIViewController()
-        let bColor: UIColor = traitCollection.userInterfaceStyle == .dark ? .black : .white
+        let bColor: UIColor = .white
         newsVC.view.backgroundColor = bColor
         newsVC.title = "News"
         newsVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "newsfeed_28"), selectedImage: UIImage(named: "newsfeed_28"))

@@ -57,7 +57,7 @@ class FriendsViewController: UIViewController, FriendsDisplayLogic
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        view.backgroundColor = traitCollection.userInterfaceStyle == .dark ? .black : .white
+        view.backgroundColor = .white
         doSomething()
     }
     
