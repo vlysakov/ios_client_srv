@@ -17,14 +17,12 @@ class MainController: UITabBarController {
         profileVC.title = "Profile"
         profileVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "user_circle_28"), selectedImage: UIImage(named: "user_circle_28"))
         
-        let groupsVC = GroupViewController()
-        groupsVC.view.backgroundColor = bColor
-        groupsVC.title = "Сообщества"
-        groupsVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "users3_28"), selectedImage: UIImage(named: "users3_28"))
+//        let groupsVC = GroupViewController()
+//        groupsVC.view.backgroundColor = bColor
+//        groupsVC.title = "Сообщества"
+//        groupsVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "users3_28"), selectedImage: UIImage(named: "users3_28"))
         
-        self.viewControllers = [UINavigationController(rootViewController: groupsVC),
-                                UINavigationController(rootViewController: friendsVC),
-                                UINavigationController(rootViewController: profileVC)]
+        self.viewControllers = [UINavigationController(rootViewController: profileVC)]
         
         print("UserId = \(Session.instance.userId ?? "nil")")
 

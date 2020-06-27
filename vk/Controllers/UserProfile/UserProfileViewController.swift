@@ -43,15 +43,6 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
         router.dataStore = interactor
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let scene = segue.identifier {
-            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-            if let router = router, router.responds(to: selector) {
-                router.perform(selector, with: segue)
-            }
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
@@ -67,6 +58,7 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
     let userView: UserViewControl = UserViewControl()
     private func configureUI() {
         view.backgroundColor = traitCollection.userInterfaceStyle == .dark ? .black : .white
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         let sv = UIScrollView()
         view.addSubview(sv)
         sv.fillSuperview()
@@ -107,6 +99,8 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
         b1.heightAnchor.constraint(equalToConstant: 32).isActive = true
         b2.widthAnchor.constraint(equalToConstant: view.frame.width / 2).isActive = true
         b2.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        b2.addTarget(self, action: #selector(buttonGroupsPressed(_:)), for: .touchDown)
+        b1.addTarget(self, action: #selector(buttonFriendsPressed(_:)), for: .touchDown)
         return sv
     }
     
@@ -117,7 +111,16 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
             userView.url = owner.photoUrlString
         case .displayImages(let images):
             imageModel = images
+            collectionView.reloadData()
         }
+    }
+    
+    @objc private func buttonGroupsPressed (_ sender: Any) {
+        router?.navigateToGroup(source: self, destination: GroupViewController())
+    }
+    
+    @objc private func buttonFriendsPressed (_ sender: Any) {
+        router?.navigateToFriends(source: self, destination: FriendsViewController())
     }
 }
 

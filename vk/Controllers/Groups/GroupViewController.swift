@@ -47,7 +47,7 @@ class GroupViewController: UIViewController, GroupDisplayLogic {
         super.viewDidLoad()
         configureUI()
         interactor?.makeRequest(request: Group.Model.Request.getGroups)
-        interactor?.makeRequest(request: Group.Model.Request.getOwner(ownerId: nil))
+//        interactor?.makeRequest(request: Group.Model.Request.getOwner(ownerId: nil))
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -67,8 +67,10 @@ class GroupViewController: UIViewController, GroupDisplayLogic {
             iv.shadowOpacity = 15
             iv.shadowRadius = 3
             iv.sizeToFit()
-            iv.height = (self.navigationController?.toolbar.frame.height ?? 0) - 9
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: iv)
+            iv.height = (self.navigationController?.toolbar.frame.height ?? 0) - 18
+            self.navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: iv),
+                                                       UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)]
+                                                       
             iv.fillSuperview()
         }
     }
@@ -86,6 +88,8 @@ class GroupViewController: UIViewController, GroupDisplayLogic {
         tableView.register(UserTableViewCell.self, forCellReuseIdentifier: "UserTableViewCell")
         self.view.addSubview(tableView)
         tableView.fillSuperview()
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
     }
     
 }
