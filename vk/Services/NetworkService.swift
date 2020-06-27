@@ -47,22 +47,4 @@ class NetworkService {
         return response
     }
     
-    func printGroups() {
-        request(method: .getGroups, params: ["owner_id": Session.instance.userId ?? "", "extended": "1"], completion: {r, _ in
-            let decoded = self.decodeJSON(type: ItemsResponseWrapper<GroupItem>.self, from: r)
-            if let d = decoded {
-                d.response.items.forEach{ print ("Group = \($0.name)") }
-            }
-        })
-    }
-    
-    func printSearchGroups(_ str: String) {
-        request(method: .searchGroups, params: ["q": str, "count": "5"], completion: {r, _ in
-            let decoded = self.decodeJSON(type: ItemsResponseWrapper<GroupItem>.self, from: r)
-            if let d = decoded {
-                d.response.items.forEach{ print ("Find Group (search string = \(str)) = \($0.name)") }
-            }
-        })
-    }
-    
 }

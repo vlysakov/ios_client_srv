@@ -9,6 +9,7 @@ class ThumbCell: UICollectionViewCell {
     var urlString: String? {
         didSet {
             if let urlStr = urlString {
+                imageView.kf.indicatorType = .activity
                 imageView.kf.setImage(with: URL(string: urlStr ))
             }
         }

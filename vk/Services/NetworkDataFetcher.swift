@@ -19,16 +19,34 @@ class NetworkDataFetcher: DataFetcher {
         service.request(method: .getUsers, params: ["fields": "has_photo, photo_50, photo_100, photo_max, online, status, last_seen"], completion: {r, _ in
             let decoded = self.decodeJSON(type: BaseResponseWrapper<[UserItem]>.self, from: r)
             guard let rsp = decoded?.response else { return }
-                guard rsp.count > 0 else { return }
-                response(decoded?.response[0])
+            guard rsp.count > 0 else { return }
+            response(decoded?.response[0])
         })
     }
     
     func getPhotos(userId: String?, response: @escaping (ItemsResponseWrapper<PhotoItem>?) -> Void) {
         let params = ["owner_id": userId ?? (Session.instance.userId ?? ""),
-                 "album_id": "wall"]
+                      "album_id": "wall"]
         service.request(method: .getPhotos, params: params, completion: {r, _ in
             let decoded = self.decodeJSON(type: ItemsResponseWrapper<PhotoItem>.self, from: r)
+            response(decoded)
+        })
+    }
+    
+    func searchGroups(searchStr str: String, response: @escaping (ItemsResponseWrapper<GroupItem>?) -> Void) {
+        guard str == "" else { return }
+        service.request(method: .searchGroups, params: ["q": str, "count": "5"], completion: {r, _ in
+            let decoded = self.decodeJSON(type: ItemsResponseWrapper<GroupItem>.self, from: r)
+            response(decoded)
+        })
+    }
+    
+    
+    func getGroups(userId: String?, response: @escaping (ItemsResponseWrapper<GroupItem>?) -> Void) {
+        let params = ["owner_id": userId ?? (Session.instance.userId ?? ""),
+                      "extended": "1"]
+        service.request(method: .getGroups, params: params, completion: {r, _ in
+            let decoded = self.decodeJSON(type: ItemsResponseWrapper<GroupItem>.self, from: r)
             response(decoded)
         })
     }
