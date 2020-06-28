@@ -16,6 +16,10 @@ class GroupPresenter: GroupPresentationLogic {
         case .presentOwner(let owner):
             let model = Group.OwnerViewModel.init(name: owner.firstName + " " + owner.lastName, photoUrlString: owner.photo100)
             viewController?.displayData(viewModel: Group.Model.ViewModel.displayOwner(ownerViewModel: model))
+        case .presentSearch(let groups):
+            let cells = groups.items.map { groupViewModel($0) }
+            let model = Group.GroupViewModel.init(cells: cells)
+            viewController?.displayData(viewModel: Group.Model.ViewModel.displaySearch(groupViewModel: model))
         }
     }
     

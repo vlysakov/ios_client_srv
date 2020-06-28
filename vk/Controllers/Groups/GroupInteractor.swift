@@ -26,6 +26,11 @@ class GroupInteractor: GroupBusinessLogic, GroupDataStore {
             worker.getOwnerInfo(completion: { [weak self] (owner) in
                 self?.presenter?.presentData(response: Group.Model.Response.presentOwner(owner: owner))
             })
+        
+        case .searchGroups(let searchStr):
+            worker.searchGroups(searchStr, completion: { [weak self] (items) in
+                self?.presenter?.presentData(response: Group.Model.Response.presentSearch(groups: items))
+            })
         }
     }
 }

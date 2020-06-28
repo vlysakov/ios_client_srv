@@ -50,6 +50,13 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
         interactor?.makeRequest(request: UserProfile.Model.Request.getImages)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.navigationBar.backIndicatorImage = UIImage(named: "arrow_left_28")
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "arrow_left_28")
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
+    
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         view.backgroundColor = traitCollection.userInterfaceStyle == .dark ? .black : .white
@@ -58,7 +65,6 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
     let userView: UserViewControl = UserViewControl()
     private func configureUI() {
         view.backgroundColor = traitCollection.userInterfaceStyle == .dark ? .black : .white
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         let sv = UIScrollView()
         view.addSubview(sv)
         sv.fillSuperview()

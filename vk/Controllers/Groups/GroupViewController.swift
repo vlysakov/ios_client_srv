@@ -10,6 +10,7 @@ class GroupViewController: UIViewController, GroupDisplayLogic {
     
     private var viewModel = Group.GroupViewModel.init(cells: [])
     private var tableView: UITableView = UITableView()
+    var searchBar = UISearchBar()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -34,20 +35,10 @@ class GroupViewController: UIViewController, GroupDisplayLogic {
         router.dataStore = interactor
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let scene = segue.identifier {
-            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-            if let router = router, router.responds(to: selector) {
-                router.perform(selector, with: segue)
-            }
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         interactor?.makeRequest(request: Group.Model.Request.getGroups)
-//        interactor?.makeRequest(request: Group.Model.Request.getOwner(ownerId: nil))
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -61,6 +52,9 @@ class GroupViewController: UIViewController, GroupDisplayLogic {
         case .displayGroups(let model):
             self.viewModel = model
             tableView.reloadData()
+        case .displaySearch(let model):
+            self.viewModel = model
+            tableView.reloadData()
         case .displayOwner(let owner):
             let iv = AvatarImageView()
             iv.url = owner.photoUrlString
@@ -70,15 +64,20 @@ class GroupViewController: UIViewController, GroupDisplayLogic {
             iv.height = (self.navigationController?.toolbar.frame.height ?? 0) - 18
             self.navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: iv),
                                                        UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)]
-                                                       
+            
             iv.fillSuperview()
         }
     }
 
-    
     private func configureUI() {
+        title = "Сообщества"
         view.backgroundColor = traitCollection.userInterfaceStyle == .dark ? .black : .white
         navigationController?.hidesBarsOnSwipe = true
+        searchBar.delegate = self
+        searchBar.placeholder = "Поиск"
+        searchBar.sizeToFit()
+        searchBar.showsCancelButton = true
+        searchBar.searchBarStyle = .minimal
         tableView.rowHeight = 56
         tableView.separatorStyle = .none
         tableView.sectionHeaderHeight = 1
@@ -89,7 +88,38 @@ class GroupViewController: UIViewController, GroupDisplayLogic {
         self.view.addSubview(tableView)
         tableView.fillSuperview()
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "search_28"), style: .plain, target: self, action: #selector(searchButtonPressed(_:)))
+    }
+    
+    @objc func searchButtonPressed(_ sender: Any) {
+        showSearchBar()
+    }
+    
+    var titleView: UIView?
+    var btnSearch: UIBarButtonItem?
+    
+    private func showSearchBar() {
+        searchBar.text = ""
+        searchBar.alpha = 0
+        titleView = navigationItem.titleView
+        navigationItem.titleView = searchBar
+        btnSearch = navigationItem.rightBarButtonItem
+        navigationItem.setRightBarButton(nil, animated: true)
+        
+        UIView .animate(withDuration: 0.5,
+                        animations: { self.searchBar.alpha = 1 },
+                        completion: { finished in self.searchBar.becomeFirstResponder() }
+        )
+    }
+    
+    private func hideSearchBar() {
+        navigationItem.setRightBarButton(btnSearch, animated: true)
+        titleView?.alpha = 0
+        UIView .animate(withDuration: 0.5,
+                        animations: {
+                            self.navigationItem.titleView = self.titleView
+                            self.titleView?.alpha = 1 },
+                        completion: { finished in })
     }
     
 }
@@ -107,4 +137,16 @@ extension GroupViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+}
+
+extension GroupViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        interactor?.makeRequest(request: Group.Model.Request.searchGroups(searchStr: searchText))
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        interactor?.makeRequest(request: Group.Model.Request.getGroups)
+        searchBar.endEditing(true)
+        hideSearchBar()
+    }
 }

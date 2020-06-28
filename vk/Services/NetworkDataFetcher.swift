@@ -34,8 +34,8 @@ class NetworkDataFetcher: DataFetcher {
     }
     
     func searchGroups(searchStr str: String, response: @escaping (ItemsResponseWrapper<GroupItem>?) -> Void) {
-        guard str == "" else { return }
-        service.request(method: .searchGroups, params: ["q": str, "count": "5"], completion: {r, _ in
+        guard str != "" else { return }
+        service.request(method: .searchGroups, params: ["q": str, "sort": "0", "type": "group"], completion: {r, _ in
             let decoded = self.decodeJSON(type: ItemsResponseWrapper<GroupItem>.self, from: r)
             response(decoded)
         })

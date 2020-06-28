@@ -5,14 +5,17 @@ enum Group {
         enum Request {
             case getGroups
             case getOwner(ownerId: String?)
+            case searchGroups(searchStr: String?)
         }
         enum Response {
             case presentGroups(groups: ItemsResponseWrapper<GroupItem>.BaseResponse)
             case presentOwner(owner: UserItem)
+            case presentSearch(groups: ItemsResponseWrapper<GroupItem>.BaseResponse)
         }
         enum ViewModel {
             case displayGroups(groupViewModel: GroupViewModel)
             case displayOwner(ownerViewModel: OwnerViewModel)
+            case displaySearch(groupViewModel: GroupViewModel)
         }
     }
     
