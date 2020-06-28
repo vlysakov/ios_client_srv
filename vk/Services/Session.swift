@@ -31,7 +31,7 @@ class Session {
         guard let at = ud.string(forKey: "access_token") else { return }
         accessToken = at
         userId = ud.string(forKey: "user_id")
-        expiresIn = ud.string(forKey: "user_id")
+        expiresIn = ud.string(forKey: "expiresIn")
         authDate = ud.object(forKey: "authDate") as! Date?
     }
    
