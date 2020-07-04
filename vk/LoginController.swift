@@ -1,9 +1,11 @@
 import UIKit
 import WebKit
+import Alamofire
 
 class LoginController: UIViewController, WKNavigationDelegate {
     
     var webView: WKWebView!
+    var afterSignIn: (() -> ())?
     
     override func loadView() {
         super.loadView()
@@ -18,6 +20,7 @@ class LoginController: UIViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         webView.load(loginRequest())
+        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
     }
     
     private func loginRequest() -> URLRequest {
@@ -26,13 +29,21 @@ class LoginController: UIViewController, WKNavigationDelegate {
         urlComponents.host = "oauth.vk.com"
         urlComponents.path = "/authorize"
         urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: "7506747"),
+            URLQueryItem(name: "client_id", value: "7522714"),
             URLQueryItem(name: "display", value: "mobile"),
             URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
             URLQueryItem(name: "scope", value: "262150"),
             URLQueryItem(name: "response_type", value: "token"),
         ]
         return URLRequest(url: urlComponents.url!)
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "estimatedProgress" {
+            if webView.estimatedProgress == 1.0 {
+                afterSignIn?()
+            }
+        }
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
@@ -50,10 +61,17 @@ class LoginController: UIViewController, WKNavigationDelegate {
                 dict[key] = value
                 return dict
         }
+        
         Session.instance.accessToken = params["access_token"]
         Session.instance.expiresIn = params["expires_in"]
         Session.instance.userId = params["user_id"]
+        guard let userId = params["user_id"], let accessToken = params["access_token"], let expiresIn = params["expires_in"] else {
+            decisionHandler(.cancel)
+            return
+        }
+        Session.instance.set(userId: userId, accessToken: accessToken, expiresIn: expiresIn)
         decisionHandler(.cancel)
+        afterSignIn?()
     }
 
 
