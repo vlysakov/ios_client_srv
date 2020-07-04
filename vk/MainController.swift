@@ -4,28 +4,14 @@ class MainController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(tabBar.frame.height)
-        let newsVC = UIViewController()
-        let bColor: UIColor = .white
-        newsVC.view.backgroundColor = bColor
-        newsVC.title = "News"
-        newsVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "newsfeed_28"), selectedImage: UIImage(named: "newsfeed_28"))
-        let friendsVC = FriendsViewController()
-        friendsVC.title = "Friends"
-        friendsVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "users_28"), selectedImage: UIImage(named: "users_28"))
-        let profileVC = UIViewController()
-        profileVC.view.backgroundColor = bColor
+        let profileVC = UserProfileViewController()
+        profileVC.view.backgroundColor = traitCollection.userInterfaceStyle == .dark ? .black : .white
         profileVC.title = "Profile"
         profileVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "user_circle_28"), selectedImage: UIImage(named: "user_circle_28"))
-        
-        self.viewControllers = [friendsVC, newsVC, profileVC]
+
+        self.viewControllers = [UINavigationController(rootViewController: profileVC)]
         
         print("UserId = \(Session.instance.userId ?? "nil")")
-        NetworkService.instance.printFriends()
-        NetworkService.instance.printPhotos()
-        NetworkService.instance.printGroups()
-        NetworkService.instance.printSearchGroups("nikon")
-        NetworkService.instance.printUserInfo()
 
     }
     

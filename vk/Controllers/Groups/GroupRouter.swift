@@ -1,16 +1,16 @@
 import UIKit
 
-@objc protocol FriendsRoutingLogic {
+@objc protocol GroupRoutingLogic {
     //func routeToSomewhere(segue: UIStoryboardSegue?)
 }
 
-protocol FriendsDataPassing {
-    var dataStore: FriendsDataStore? { get }
+protocol GroupDataPassing {
+    var dataStore: GroupDataStore? { get }
 }
 
-class FriendsRouter: NSObject, FriendsRoutingLogic, FriendsDataPassing {
-    weak var viewController: FriendsViewController?
-    var dataStore: FriendsDataStore?
+class GroupRouter: NSObject, GroupRoutingLogic, GroupDataPassing {
+    weak var viewController: GroupViewController?
+    var dataStore: GroupDataStore?
     
     // MARK: Routing
     
@@ -31,14 +31,14 @@ class FriendsRouter: NSObject, FriendsRoutingLogic, FriendsDataPassing {
     
     // MARK: Navigation
     
-    //func navigateToSomewhere(source: FriendsViewController, destination: SomewhereViewController)
+    //func navigateToSomewhere(source: GroupViewController, destination: SomewhereViewController)
     //{
     //  source.show(destination, sender: nil)
     //}
     
     // MARK: Passing data
     
-    //func passDataToSomewhere(source: FriendsDataStore, destination: inout SomewhereDataStore)
+    //func passDataToSomewhere(source: GroupDataStore, destination: inout SomewhereDataStore)
     //{
     //  destination.name = source.name
     //}

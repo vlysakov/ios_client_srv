@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  vk
-//
-//  Created by Slava V. Lysakov on 10.06.2020.
-//  Copyright © 2020 Slava V. Lysakov. All rights reserved.
-//
-
 import UIKit
 
 @UIApplicationMain

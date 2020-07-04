@@ -1,29 +1,32 @@
 import UIKit
 
-protocol FriendsBusinessLogic
-{
-  func doSomething(request: Friends.Something.Request)
+protocol FriendsBusinessLogic {
+    func makeRequest(request: Friends.Model.Request)
 }
 
-protocol FriendsDataStore
-{
-  //var name: String { get set }
+protocol FriendsDataStore {
+    //var name: String { get set }
 }
 
-class FriendsInteractor: FriendsBusinessLogic, FriendsDataStore
-{
-  var presenter: FriendsPresentationLogic?
-  var worker: FriendsWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: Friends.Something.Request)
-  {
-    worker = FriendsWorker()
-    worker?.doSomeWork()
+class FriendsInteractor: FriendsBusinessLogic, FriendsDataStore {
+    var presenter: FriendsPresentationLogic?
+    var worker: FriendsWorker
     
-    let response = Friends.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+    init() {
+        worker = FriendsWorker()
+    }
+    
+    func makeRequest(request: Friends.Model.Request) {
+        switch request {
+        case .getFriends:
+            worker.getFriends(completion: { [weak self] (items) in
+                self?.presenter?.presentData(response: Friends.Model.Response.presentFriends(friends: items))
+            })
+        case .getOwner:
+            worker.getOwnerInfo(completion: { [weak self] (owner) in
+                self?.presenter?.presentData(response: Friends.Model.Response.presentOwner(owner: owner))
+            })
+        }
+    }
+    
 }

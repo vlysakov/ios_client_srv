@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2266D25C24A666E8007B106D /* GroupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2266D25624A666E8007B106D /* GroupPresenter.swift */; };
+		2266D25D24A666E8007B106D /* GroupWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2266D25724A666E8007B106D /* GroupWorker.swift */; };
+		2266D25E24A666E8007B106D /* GroupRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2266D25824A666E8007B106D /* GroupRouter.swift */; };
+		2266D25F24A666E8007B106D /* GroupModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2266D25924A666E8007B106D /* GroupModels.swift */; };
+		2266D26024A666E8007B106D /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2266D25A24A666E8007B106D /* GroupViewController.swift */; };
+		2266D26124A666E8007B106D /* GroupInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2266D25B24A666E8007B106D /* GroupInteractor.swift */; };
 		F9361FB52490F8D700ADE1D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9361FB42490F8D700ADE1D8 /* AppDelegate.swift */; };
 		F9361FB72490F8D700ADE1D8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9361FB62490F8D700ADE1D8 /* SceneDelegate.swift */; };
 		F9361FB92490F8D700ADE1D8 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9361FB82490F8D700ADE1D8 /* LoginController.swift */; };
@@ -27,11 +33,30 @@
 		F94BC03124A1DD8F002ACA08 /* CountableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BC03024A1DD8F002ACA08 /* CountableItem.swift */; };
 		F94BC03324A1F186002ACA08 /* GroupResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BC03224A1F186002ACA08 /* GroupResponse.swift */; };
 		F94BC03724A1F79F002ACA08 /* ResponseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BC03624A1F79F002ACA08 /* ResponseWrapper.swift */; };
+		F94BC03924A20DED002ACA08 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BC03824A20DED002ACA08 /* UserTableViewCell.swift */; };
+		F94BC03B24A251BA002ACA08 /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BC03A24A251BA002ACA08 /* DataFetcher.swift */; };
+		F94BC03D24A252C5002ACA08 /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BC03C24A252C5002ACA08 /* NetworkDataFetcher.swift */; };
+		F94BC06924A36F92002ACA08 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F94BC06824A36F92002ACA08 /* Kingfisher */; };
+		F94BC06B24A37A11002ACA08 /* GalleryFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BC06A24A37A11002ACA08 /* GalleryFlowLayout.swift */; };
+		F94BC07324A37AB1002ACA08 /* UserProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BC06D24A37AB1002ACA08 /* UserProfilePresenter.swift */; };
+		F94BC07424A37AB1002ACA08 /* UserProfileWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BC06E24A37AB1002ACA08 /* UserProfileWorker.swift */; };
+		F94BC07524A37AB1002ACA08 /* UserProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BC06F24A37AB1002ACA08 /* UserProfileRouter.swift */; };
+		F94BC07624A37AB1002ACA08 /* UserProfileModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BC07024A37AB1002ACA08 /* UserProfileModels.swift */; };
+		F94BC07724A37AB1002ACA08 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BC07124A37AB1002ACA08 /* UserProfileViewController.swift */; };
+		F94BC07824A37AB1002ACA08 /* UserProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BC07224A37AB1002ACA08 /* UserProfileInteractor.swift */; };
+		F94BC09A24A39C2D002ACA08 /* UserViewControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BC09924A39C2D002ACA08 /* UserViewControl.swift */; };
+		F94BC0A024A62E12002ACA08 /* ThumbCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BC09F24A62E12002ACA08 /* ThumbCell.swift */; };
 		F9FCE21A2491060900993EC4 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FCE2192491060900993EC4 /* UIView+Extension.swift */; };
 		F9FCE21E24911A2700993EC4 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FCE21D24911A2700993EC4 /* Session.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2266D25624A666E8007B106D /* GroupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupPresenter.swift; sourceTree = "<group>"; };
+		2266D25724A666E8007B106D /* GroupWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupWorker.swift; sourceTree = "<group>"; };
+		2266D25824A666E8007B106D /* GroupRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRouter.swift; sourceTree = "<group>"; };
+		2266D25924A666E8007B106D /* GroupModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupModels.swift; sourceTree = "<group>"; };
+		2266D25A24A666E8007B106D /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
+		2266D25B24A666E8007B106D /* GroupInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInteractor.swift; sourceTree = "<group>"; };
 		F9361FB12490F8D700ADE1D8 /* vk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9361FB42490F8D700ADE1D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F9361FB62490F8D700ADE1D8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +78,18 @@
 		F94BC03024A1DD8F002ACA08 /* CountableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountableItem.swift; sourceTree = "<group>"; };
 		F94BC03224A1F186002ACA08 /* GroupResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupResponse.swift; sourceTree = "<group>"; };
 		F94BC03624A1F79F002ACA08 /* ResponseWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseWrapper.swift; sourceTree = "<group>"; };
+		F94BC03824A20DED002ACA08 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		F94BC03A24A251BA002ACA08 /* DataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcher.swift; sourceTree = "<group>"; };
+		F94BC03C24A252C5002ACA08 /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
+		F94BC06A24A37A11002ACA08 /* GalleryFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryFlowLayout.swift; sourceTree = "<group>"; };
+		F94BC06D24A37AB1002ACA08 /* UserProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilePresenter.swift; sourceTree = "<group>"; };
+		F94BC06E24A37AB1002ACA08 /* UserProfileWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileWorker.swift; sourceTree = "<group>"; };
+		F94BC06F24A37AB1002ACA08 /* UserProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileRouter.swift; sourceTree = "<group>"; };
+		F94BC07024A37AB1002ACA08 /* UserProfileModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileModels.swift; sourceTree = "<group>"; };
+		F94BC07124A37AB1002ACA08 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		F94BC07224A37AB1002ACA08 /* UserProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileInteractor.swift; sourceTree = "<group>"; };
+		F94BC09924A39C2D002ACA08 /* UserViewControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewControl.swift; sourceTree = "<group>"; };
+		F94BC09F24A62E12002ACA08 /* ThumbCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbCell.swift; sourceTree = "<group>"; };
 		F9FCE2192491060900993EC4 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		F9FCE21D24911A2700993EC4 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -62,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F94BC06924A36F92002ACA08 /* Kingfisher in Frameworks */,
 				F9447BA6249DF65F00C80DF9 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -72,11 +110,23 @@
 		22909D16249FAA3500CA8792 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F94BC01924A096F8002ACA08 /* Controls */,
 				F9361FBD2490F8D900ADE1D8 /* Assets.xcassets */,
 				F9361FBF2490F8D900ADE1D8 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		22D4528C24A66506005ABC2B /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				2266D25624A666E8007B106D /* GroupPresenter.swift */,
+				2266D25724A666E8007B106D /* GroupWorker.swift */,
+				2266D25824A666E8007B106D /* GroupRouter.swift */,
+				2266D25924A666E8007B106D /* GroupModels.swift */,
+				2266D25A24A666E8007B106D /* GroupViewController.swift */,
+				2266D25B24A666E8007B106D /* GroupInteractor.swift */,
+			);
+			path = Groups;
 			sourceTree = "<group>";
 		};
 		F9361FA82490F8D700ADE1D8 = {
@@ -101,7 +151,6 @@
 				F94BC01C24A0BC7F002ACA08 /* Controllers */,
 				F9361FC22490F8D900ADE1D8 /* Info.plist */,
 				22909D16249FAA3500CA8792 /* Resources */,
-				F94BC018249F8ABA002ACA08 /* Model */,
 				F9447BA7249E050300C80DF9 /* Services */,
 				F9FCE218249105DC00993EC4 /* Helpers */,
 				F9361FB82490F8D700ADE1D8 /* LoginController.swift */,
@@ -113,8 +162,11 @@
 		F9447BA7249E050300C80DF9 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				F94BC018249F8ABA002ACA08 /* Model */,
 				F9FCE21D24911A2700993EC4 /* Session.swift */,
 				F9447BA8249E052100C80DF9 /* NetworkService.swift */,
+				F94BC03A24A251BA002ACA08 /* DataFetcher.swift */,
+				F94BC03C24A252C5002ACA08 /* NetworkDataFetcher.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -135,6 +187,10 @@
 			isa = PBXGroup;
 			children = (
 				F94BC01A24A0977F002ACA08 /* AvatarImageView.swift */,
+				F94BC03824A20DED002ACA08 /* UserTableViewCell.swift */,
+				F94BC06A24A37A11002ACA08 /* GalleryFlowLayout.swift */,
+				F94BC09924A39C2D002ACA08 /* UserViewControl.swift */,
+				F94BC09F24A62E12002ACA08 /* ThumbCell.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -142,6 +198,9 @@
 		F94BC01C24A0BC7F002ACA08 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F94BC01924A096F8002ACA08 /* Controls */,
+				22D4528C24A66506005ABC2B /* Groups */,
+				F94BC06C24A37A6A002ACA08 /* UserProfile */,
 				F94BC02924A0BCF7002ACA08 /* Friends */,
 			);
 			path = Controllers;
@@ -158,6 +217,19 @@
 				F94BC02224A0BCF1002ACA08 /* FriendsInteractor.swift */,
 			);
 			path = Friends;
+			sourceTree = "<group>";
+		};
+		F94BC06C24A37A6A002ACA08 /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				F94BC06D24A37AB1002ACA08 /* UserProfilePresenter.swift */,
+				F94BC06E24A37AB1002ACA08 /* UserProfileWorker.swift */,
+				F94BC06F24A37AB1002ACA08 /* UserProfileRouter.swift */,
+				F94BC07024A37AB1002ACA08 /* UserProfileModels.swift */,
+				F94BC07124A37AB1002ACA08 /* UserProfileViewController.swift */,
+				F94BC07224A37AB1002ACA08 /* UserProfileInteractor.swift */,
+			);
+			path = UserProfile;
 			sourceTree = "<group>";
 		};
 		F9FCE218249105DC00993EC4 /* Helpers */ = {
@@ -188,6 +260,7 @@
 			name = vk;
 			packageProductDependencies = (
 				F9447BA5249DF65F00C80DF9 /* Alamofire */,
+				F94BC06824A36F92002ACA08 /* Kingfisher */,
 			);
 			productName = vk;
 			productReference = F9361FB12490F8D700ADE1D8 /* vk.app */;
@@ -219,6 +292,7 @@
 			mainGroup = F9361FA82490F8D700ADE1D8;
 			packageReferences = (
 				F9447BA4249DF65F00C80DF9 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				F94BC06724A36F92002ACA08 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = F9361FB22490F8D700ADE1D8 /* Products */;
 			projectDirPath = "";
@@ -246,24 +320,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2266D26024A666E8007B106D /* GroupViewController.swift in Sources */,
 				F94BC03724A1F79F002ACA08 /* ResponseWrapper.swift in Sources */,
 				F9FCE21E24911A2700993EC4 /* Session.swift in Sources */,
 				F94BC02624A0BCF1002ACA08 /* FriendsModels.swift in Sources */,
 				F94BC02724A0BCF1002ACA08 /* FriendsViewController.swift in Sources */,
+				2266D25E24A666E8007B106D /* GroupRouter.swift in Sources */,
+				F94BC03924A20DED002ACA08 /* UserTableViewCell.swift in Sources */,
 				F94BC017249F76FE002ACA08 /* MainController.swift in Sources */,
 				F94BC02824A0BCF1002ACA08 /* FriendsInteractor.swift in Sources */,
 				F94BC02D24A0CF43002ACA08 /* UserResponse.swift in Sources */,
 				F9361FB92490F8D700ADE1D8 /* LoginController.swift in Sources */,
+				F94BC0A024A62E12002ACA08 /* ThumbCell.swift in Sources */,
+				F94BC07724A37AB1002ACA08 /* UserProfileViewController.swift in Sources */,
 				F94BC02F24A0F034002ACA08 /* PhotoResponse.swift in Sources */,
+				F94BC07624A37AB1002ACA08 /* UserProfileModels.swift in Sources */,
 				F9361FB52490F8D700ADE1D8 /* AppDelegate.swift in Sources */,
+				F94BC07524A37AB1002ACA08 /* UserProfileRouter.swift in Sources */,
 				F94BC03124A1DD8F002ACA08 /* CountableItem.swift in Sources */,
 				F9FCE21A2491060900993EC4 /* UIView+Extension.swift in Sources */,
+				F94BC07324A37AB1002ACA08 /* UserProfilePresenter.swift in Sources */,
 				F94BC01B24A0977F002ACA08 /* AvatarImageView.swift in Sources */,
+				F94BC03D24A252C5002ACA08 /* NetworkDataFetcher.swift in Sources */,
+				2266D25C24A666E8007B106D /* GroupPresenter.swift in Sources */,
 				F94BC03324A1F186002ACA08 /* GroupResponse.swift in Sources */,
+				2266D25F24A666E8007B106D /* GroupModels.swift in Sources */,
+				F94BC03B24A251BA002ACA08 /* DataFetcher.swift in Sources */,
+				F94BC07824A37AB1002ACA08 /* UserProfileInteractor.swift in Sources */,
 				F94BC02524A0BCF1002ACA08 /* FriendsRouter.swift in Sources */,
+				F94BC06B24A37A11002ACA08 /* GalleryFlowLayout.swift in Sources */,
 				F9447BA9249E052100C80DF9 /* NetworkService.swift in Sources */,
+				2266D25D24A666E8007B106D /* GroupWorker.swift in Sources */,
 				F9361FB72490F8D700ADE1D8 /* SceneDelegate.swift in Sources */,
 				F94BC02324A0BCF1002ACA08 /* FriendsPresenter.swift in Sources */,
+				2266D26124A666E8007B106D /* GroupInteractor.swift in Sources */,
+				F94BC09A24A39C2D002ACA08 /* UserViewControl.swift in Sources */,
+				F94BC07424A37AB1002ACA08 /* UserProfileWorker.swift in Sources */,
 				F94BC02424A0BCF1002ACA08 /* FriendsWorker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -462,6 +554,14 @@
 				minimumVersion = 5.2.1;
 			};
 		};
+		F94BC06724A36F92002ACA08 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.14.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -469,6 +569,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F9447BA4249DF65F00C80DF9 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		F94BC06824A36F92002ACA08 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F94BC06724A36F92002ACA08 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

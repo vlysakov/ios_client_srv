@@ -1,19 +1,32 @@
 import UIKit
 
-enum Friends
-{
-  // MARK: Use cases
-  
-  enum Something
-  {
-    struct Request
-    {
+enum Friends {
+    enum Model {
+        enum Request {
+            case getFriends
+            case getOwner
+        }
+        enum Response {
+            case presentFriends(friends: ItemsResponseWrapper<UserItem>.BaseResponse)
+            case presentOwner(owner: UserItem)
+        }
+        enum ViewModel {
+            case displayFriends(friendViewModel: FriendViewModel)
+            case displayOwner(owner: UserViewModel)
+        }
     }
-    struct Response
-    {
+}
+
+struct UserViewModel {
+    var photoUrlString: String?
+}
+
+struct FriendViewModel {
+    struct Cell {
+        var friendId: Int
+        var photoUrl: String?
+        var fullName: String
     }
-    struct ViewModel
-    {
-    }
-  }
+    
+    let cells: [Cell]
 }
